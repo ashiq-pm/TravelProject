@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Registration Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #BCF7F6;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            border: 1px solid #11D6D4;
+            border-radius: 10px;
+        }
+        .card-header {
+            background-color: #11D6D4;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .btn {
+        background-color: #11D6D4;
+        }
+        .msg-box{
+        color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Registration Form</h3>
+                </div>
+                <div class="card-body">
+                    <form action="register" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input type="text" name="username" class="form-control" id="username" placeholder="Enter your username">
+                        </div>
+                        <div class="form-group">
+                            <label for="first_name">First Name:</label>
+                            <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Enter your first name">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name:</label>
+                            <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Enter your last name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password:</label>
+                            <input type="password" name="conf_password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                    {% for msg in messages %}
+                    <div class="msg-box">
+                        <center><p>{{msg}}</p></center>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js (optional) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
